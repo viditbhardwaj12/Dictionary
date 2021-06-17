@@ -75,7 +75,7 @@ void get_Str(trie *temp,string str){
     }
 }
 
-bool Suggest(string str){
+void Suggest(string str){
 
     trie *temp=root;
 
@@ -84,17 +84,15 @@ bool Suggest(string str){
         if(temp->child[str[i]-'a']==NULL){
 
             get_Str(temp,str.substr(0,i));
-            return false;
+            return;
         }
 
         temp=temp->child[str[i]-'a'];
     }
 
-    if(temp->isterminal) return true;
-
     get_Str(temp,str);
 
-    return false;
+    return;
 }
 
 signed main(){
@@ -127,10 +125,8 @@ signed main(){
 }
 
 /*
-
 i/p->
-
-8
+7
 chile 
 china
 chinagate
